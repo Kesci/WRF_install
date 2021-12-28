@@ -35,7 +35,7 @@ ENV PATH=/opt/WRF/Library/bin:$PATH
 ENV NETCDF=/opt/WRF/Library/
 ENV LIBS="-lnetcdf -lhdf5_hl -lhdf5 -lz"
 
-RUN /opt/WRF/Downloads \
+RUN cd /opt/WRF/Downloads \
     && wget https://downloads.unidata.ucar.edu/netcdf-fortran/4.5.3/netcdf-fortran-4.5.3.tar.gz \
     && tar -xvzf netcdf-fortran-4.5.3.tar.gz \
     && cd netcdf-fortran-4.5.3 \
