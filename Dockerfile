@@ -48,7 +48,7 @@ ENV JASPERINC=/opt/WRF/Library/include
 RUN cd /opt/WRF/Downloads \
     && wget https://ece.engr.uvic.ca/~frodo/jasper/software/jasper-2.0.14.tar.gz \
     && tar -xvzf jasper-2.0.14.tar.gz \
-    && cmake -G "Unix Makefiles" -H . -B./build -DCMAKE_INSTALL_PREFIX=/opt/WRF/Library/ \
+    && cmake -G "Unix Makefiles" -H. -B./build -DCMAKE_INSTALL_PREFIX=/opt/WRF/Library/ \
     && cd build \
     && make -j \
     && make install 
