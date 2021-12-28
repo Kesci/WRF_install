@@ -60,8 +60,8 @@ RUN cd /opt/WRF/Downloads \
     && cd ../WRF-4.3.2/ \
     && ./clean \
     && sh -c '/bin/echo -e "33" echo -e "1" |sh ./configure' \
-    && ./compile em_real \
-    && export WRF_DIR=/opt/WRF/WRF-4.1.2
+    && ./compile em_real
+ENV WRF_DIR=/opt/WRF/WRF-4.3.2
 
 RUN cd /opt/WRF/Downloads \
     && wget https://github.com/wrf-model/WPS/archive/v4.3.1.tar.gz \
