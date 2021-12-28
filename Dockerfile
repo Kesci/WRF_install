@@ -12,7 +12,7 @@ RUN cd /opt && mkdir WRF && cd WRF && mkdir Downloads && mkdir Library
 
 RUN cd /opt/WRF/Downloads \
     && wget https://file-1258430491.cos.ap-shanghai.myqcloud.com/hdf5-1.13.0.tar.gz \
-    && tar -xvzf hdf5-1.10.5.tar \
+    && tar -xvzf hdf5-1.10.5.tar.gz \
     && cd hdf5-1.13.0/ \
     && ./configure --prefix=/opt/WRF/Library --with-zlib --enable-hl --enable-fortran \
     && make check -j \
