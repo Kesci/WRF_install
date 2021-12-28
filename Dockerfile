@@ -10,7 +10,7 @@ RUN apt-get -y install build-essential gfortran csh libpng-dev cmake
 
 RUN cd /opt && mkdir WRF && cd WRF && mkdir Downloads && mkdir Library
 
-RUN cd /opt/Downloads \
+RUN cd /opt/WRF/Downloads \
     && wget https://file-1258430491.cos.ap-shanghai.myqcloud.com/hdf5-1.13.0.tar.gz \
     && tar -xvzf hdf5-1.10.5.tar \
     && cd hdf5-1.13.0/ \
@@ -23,7 +23,7 @@ ENV LD_LIBRARY_PATH=/opt/WRF/Library/lib:$LD_LIBRARY_PATH
 
 ENV CPPFLAGS=-I/opt/WRF/Library/include 
 ENV LDFLAGS=-L/opt/WRF/Library/lib
-RUN cd /opt/Downloads \
+RUN cd /opt/WRF/Downloads \
     && wget https://downloads.unidata.ucar.edu/netcdf-c/4.8.1/src/netcdf-c-4.8.1.tar.gz \
     && tar -xvzf netcdf-c-4.8.1.tar.gz \
     && cd netcdf-c-4.8.1 \
@@ -35,7 +35,7 @@ ENV PATH=/opt/WRF/Library/bin:$PATH
 ENV NETCDF=/opt/WRF/Library/
 ENV LIBS="-lnetcdf -lhdf5_hl -lhdf5 -lz"
 
-RUN /opt/Downloads \
+RUN /opt/WRF/Downloads \
     && wget https://downloads.unidata.ucar.edu/netcdf-fortran/4.5.3/netcdf-fortran-4.5.3.tar.gz \
     && tar -xvzf netcdf-fortran-4.5.3.tar.gz \
     && cd netcdf-fortran-4.5.3 \
@@ -45,7 +45,7 @@ RUN /opt/Downloads \
 
 ENV JASPERLIB=/opt/WRF/Library/lib
 ENV JASPERINC=/opt/WRF/Library/include
-RUN cd /opt/Downloads \
+RUN cd /opt/WRF/Downloads \
     && wget https://ece.engr.uvic.ca/~frodo/jasper/software/jasper-2.0.14.tar.gz \
     && tar -xvzf jasper-2.0.14.tar.gz \
     && cmake -G "Unix Makefiles" -H . -B./build -DCMAKE_INSTALL_PREFIX=/opt/WRF/Library/ \
@@ -53,7 +53,7 @@ RUN cd /opt/Downloads \
     && make -j \
     && make install 
 
-RUN cd /opt/Downloads \
+RUN cd /opt/WRF/Downloads \
     && wget https://github.com/wrf-model/WRF/archive/refs/tags/v4.3.2.tar.gz \
     && tar -xvzf v4.3.2.tar.gz -C ../ \
     && cd ../WRF-4.3.2/ \
@@ -62,7 +62,7 @@ RUN cd /opt/Downloads \
     && ./compile em_real \
     && export WRF_DIR=/opt/WRF/WRF-4.1.2
 
-RUN cd /opt/Downloads \
+RUN cd /opt/WRF/Downloads \
     && wget https://github.com/wrf-model/WPS/archive/v4.3.1.tar.gz \
     && tar -xvzf v4.3.1.tar.gz \
     && cd WPS-4.3.1 \
