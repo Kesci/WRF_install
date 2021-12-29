@@ -68,8 +68,17 @@ RUN cd /opt/WRF/Downloads \
 ENV WRF_DIR=/opt/WRF/WRF-4.3.2
 
 RUN cd /opt/WRF/Downloads \
+    && wget http://www.mpich.org/static/downloads/3.4/mpich-3.4.tar.gz \
+    && tar -xvzf mpich-3.4.tar.gz \
+    && cd mpich-3.4 \
+    && ./configure --prefix=/opt/WRF/Library/ --with-device=ch4:ofi \
+    && make \
+    && make install
+
+RUN cd /opt/WRF/Downloads \
     && wget https://github.com/wrf-model/WPS/archive/v4.3.1.tar.gz \
     && tar -xvzf v4.3.1.tar.gz \
     && cd WPS-4.3.1 \
     && ./configure \
+    && sh -c '/bin/echo -e "4" |sh ./configure' \
     && ./compile
