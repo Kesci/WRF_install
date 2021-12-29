@@ -6,7 +6,7 @@ ARG DEBIAN_FRONTEND=noninteractive
 ENV TZ=Asia/Shanghai
 
 RUN apt-get update && apt-get -y upgrade && apt-get autoremove && apt-get autoclean
-RUN apt-get -y install build-essential gfortran csh libpng-dev cmake wget m4 unzip
+RUN apt-get -y install build-essential gfortran csh libpng-dev cmake wget m4 unzip git 
 
 RUN cd /opt && mkdir WRF && cd WRF && mkdir Downloads && mkdir Library
 
@@ -54,12 +54,16 @@ RUN cd /opt/WRF/Downloads \
     && make -j \
     && make install 
 
+ARG CC=gcc
+ARG CXX=g++
+ARG FC=gfortran
+ARG F77=gfortran
 RUN cd /opt/WRF/Downloads \
     && wget https://github.com/wrf-model/WRF/archive/refs/tags/v4.3.2.tar.gz \
     && tar -xvzf v4.3.2.tar.gz -C ../ \
     && cd ../WRF-4.3.2/ \
     && ./clean \
-    && sh -c '/bin/echo -e "3" echo -e "1" |sh ./configure' \
+    && sh -c '/bin/echo -e "33" echo -e "1" |sh ./configure' \
     && ./compile em_real
 ENV WRF_DIR=/opt/WRF/WRF-4.3.2
 
