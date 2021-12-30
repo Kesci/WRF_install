@@ -81,3 +81,23 @@ RUN cd /opt/WRF/Downloads \
     && cd WPS-4.3.1 \
     && sh -c '/bin/echo -e "4" |sh ./configure' \
     && ./compile
+
+RUN cd /opt/WRF/Downloads \
+    && wget http://www2.mmm.ucar.edu/wrf/src/ARWpost_V3.tar.gz \
+    && tar -xvzf ARWpost_V3.tar.gz -C /opt/WRF \
+    && cd /opt/WRF/ARWpost \
+    && ./clean \
+    && sed -i -e 's/-lnetcdf/-lnetcdff -lnetcdf/g' /opt/WRF/ARWpost/src/Makefile \
+    && sh -c '/bin/echo -e "3" |sh ./configure' \
+    && sed -i -e 's/-C -P/-P/g' /opt/WRF/ARWpost/configure.arwp \
+    && ./compile
+
+RUN cd /opt/WRF/Downloads \
+    && wget http://esrl.noaa.gov/gsd/wrfportal/domainwizard/WRFDomainWizard.zip \
+    && mkdir /opt/WRF/WRFDomainWizard \
+    && unzip WRFDomainWizard.zip -d $HOME/WRF/WRFDomainWizard \
+    && chmod +x $HOME/WRF/WRFDomainWizard/run_DomainWizard
+
+RUN cd /opt/WRF/Downloads \
+    && wget https://www2.mmm.ucar.edu/wrf/src/wps_files/geog_high_res_mandatory.tar.gz
+    && tar -xvzf geog_high_res_mandatory.tar.gz -C /opt/WRF
