@@ -95,8 +95,8 @@ RUN cd /opt/WRF/Downloads \
 RUN cd /opt/WRF/Downloads \
     && wget http://esrl.noaa.gov/gsd/wrfportal/domainwizard/WRFDomainWizard.zip \
     && mkdir /opt/WRF/WRFDomainWizard \
-    && unzip WRFDomainWizard.zip -d $HOME/WRF/WRFDomainWizard \
-    && chmod +x $HOME/WRF/WRFDomainWizard/run_DomainWizard
+    && unzip WRFDomainWizard.zip -d /opt/WRF/WRFDomainWizard \
+    && chmod +x /opt/WRF/WRFDomainWizard/run_DomainWizard
 
 RUN cd /opt/WRF/Downloads \
     && wget https://www2.mmm.ucar.edu/wrf/src/wps_files/geog_high_res_mandatory.tar.gz
