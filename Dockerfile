@@ -99,5 +99,5 @@ RUN cd /opt/WRF/Downloads \
     && chmod +x /opt/WRF/WRFDomainWizard/run_DomainWizard
 
 RUN cd /opt/WRF/Downloads \
-    && wget https://www2.mmm.ucar.edu/wrf/src/wps_files/geog_high_res_mandatory.tar.gz
+    && wget https://www2.mmm.ucar.edu/wrf/src/wps_files/geog_high_res_mandatory.tar.gz \
     && tar -xvzf geog_high_res_mandatory.tar.gz -C /opt/WRF
