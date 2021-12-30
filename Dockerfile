@@ -6,7 +6,7 @@ ARG DEBIAN_FRONTEND=noninteractive
 ENV TZ=Asia/Shanghai
 
 RUN apt-get update && apt-get -y upgrade && apt-get autoremove && apt-get autoclean
-RUN apt-get -y install build-essential gfortran csh libpng-dev cmake wget m4 unzip git 
+RUN apt-get -y install build-essential gfortran csh libpng-dev cmake wget m4 unzip git libpython3.8
 
 RUN cd /opt && mkdir WRF && cd WRF && mkdir Downloads && mkdir Library
 
