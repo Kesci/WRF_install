@@ -93,7 +93,7 @@ RUN cd /opt/WRF/Downloads \
     && ./compile
 
 RUN cd /opt/WRF/Downloads \
-    && wget http://esrl.noaa.gov/gsd/wrfportal/domainwizard/WRFDomainWizard.zip \
+    && wget https://file-1258430491.cos.ap-shanghai.myqcloud.com/WRFDomainWizard.zip \
     && mkdir /opt/WRF/WRFDomainWizard \
     && unzip WRFDomainWizard.zip -d /opt/WRF/WRFDomainWizard \
     && chmod +x /opt/WRF/WRFDomainWizard/run_DomainWizard
