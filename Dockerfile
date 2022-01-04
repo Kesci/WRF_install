@@ -59,13 +59,13 @@ ARG CXX=g++
 ARG FC=gfortran
 ARG F77=gfortran
 RUN cd /opt/WRF/Downloads \
-    && wget https://github.com/wrf-model/WRF/archive/refs/tags/v4.3.2.tar.gz \
-    && tar -xvzf v4.3.2.tar.gz -C ../ \
-    && cd ../WRF-4.3.2/ \
+    && wget https://github.com/wrf-model/WRF/archive/refs/tags/v4.3.1.tar.gz \
+    && tar -xvzf v4.3.1.tar.gz -C ../ \
+    && cd ../WRF-4.3.1/ \
     && ./clean \
     && sh -c '/bin/echo -e "33" echo -e "1" |sh ./configure' \
     && ./compile em_real
-ENV WRF_DIR=/opt/WRF/WRF-4.3.2
+ENV WRF_DIR=/opt/WRF/WRF-4.3.1
 
 RUN cd /opt/WRF/Downloads \
     && wget http://www.mpich.org/static/downloads/3.4/mpich-3.4.tar.gz \
