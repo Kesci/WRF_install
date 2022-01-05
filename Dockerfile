@@ -59,6 +59,14 @@ ARG CXX=g++
 ARG FC=gfortran
 ARG F77=gfortran
 RUN cd /opt/WRF/Downloads \
+    && wget http://www.mpich.org/static/downloads/3.4/mpich-3.4.tar.gz \
+    && tar -xvzf mpich-3.4.tar.gz \
+    && cd mpich-3.4 \
+    && ./configure --prefix=/opt/WRF/Library/ --with-device=ch4:ofi \
+    && make \
+    && make install
+
+RUN cd /opt/WRF/Downloads \
     && wget https://github.com/wrf-model/WRF/archive/refs/tags/v4.3.1.tar.gz \
     && tar -xvzf v4.3.1.tar.gz -C ../ \
     && cd ../WRF-4.3.1/ \
@@ -66,14 +74,6 @@ RUN cd /opt/WRF/Downloads \
     && sh -c '/bin/echo -e "34" echo -e "1" |sh ./configure' \
     && ./compile em_real
 ENV WRF_DIR=/opt/WRF/WRF-4.3.1
-
-RUN cd /opt/WRF/Downloads \
-    && wget http://www.mpich.org/static/downloads/3.4/mpich-3.4.tar.gz \
-    && tar -xvzf mpich-3.4.tar.gz \
-    && cd mpich-3.4 \
-    && ./configure --prefix=/opt/WRF/Library/ --with-device=ch4:ofi \
-    && make \
-    && make install
 
 RUN cd /opt/WRF/Downloads \
     && wget https://github.com/wrf-model/WPS/archive/v4.3.1.tar.gz \
