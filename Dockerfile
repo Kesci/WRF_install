@@ -101,3 +101,5 @@ RUN cd /opt/WRF/Downloads \
 RUN cd /opt/WRF/Downloads \
     && wget https://file-1258430491.cos.ap-shanghai.myqcloud.com/geog_high_res_mandatory.tar.gz \
     && tar -xvzf geog_high_res_mandatory.tar.gz -C /opt/WRF
+
+RUN chmod -R 777 /opt/WRF/
