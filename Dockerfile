@@ -77,7 +77,7 @@ RUN cd /opt/WRF/Downloads \
 
 RUN cd /opt/WRF/Downloads \
     && wget https://github.com/wrf-model/WPS/archive/v4.3.1.tar.gz \
-    && tar -xvzf v4.3.1.tar.gz \
+    && tar -xvzf v4.3.1.tar.gz.1 \
     && cd WPS-4.3.1 \
     && sh -c '/bin/echo -e "3" |sh ./configure' \
     && ./compile
