@@ -63,7 +63,7 @@ RUN cd /opt/WRF/Downloads \
     && tar -xvzf v4.3.1.tar.gz -C ../ \
     && cd ../WRF-4.3.1/ \
     && ./clean \
-    && sh -c '/bin/echo -e "33" echo -e "1" |sh ./configure' \
+    && sh -c '/bin/echo -e "34" echo -e "1" |sh ./configure' \
     && ./compile em_real
 ENV WRF_DIR=/opt/WRF/WRF-4.3.1
 
