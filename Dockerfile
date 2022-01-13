@@ -60,7 +60,7 @@ ARG FC=gfortran
 ARG F77=gfortran
 
 RUN cd /opt/WRF/Downloads \
-    && wget https://download.open-mpi.org/release/open-mpi/v4.1/openmpi-4.1.1.tar.gz 
+    && wget https://download.open-mpi.org/release/open-mpi/v4.1/openmpi-4.1.1.tar.gz \
     && tar zxvf openmpi-4.1.1.tar.gz \
     && cd openmpi-4.1.1 \
     && ./configure --prefix==/opt/WRF/Library/.local/openmpi \
