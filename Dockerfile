@@ -58,13 +58,19 @@ ARG CC=gcc
 ARG CXX=g++
 ARG FC=gfortran
 ARG F77=gfortran
+
 RUN cd /opt/WRF/Downloads \
-    && wget http://www.mpich.org/static/downloads/3.4/mpich-3.4.tar.gz \
-    && tar -xvzf mpich-3.4.tar.gz \
-    && cd mpich-3.4 \
-    && ./configure --prefix=/opt/WRF/Library/ --with-device=ch4:ofi \
-    && make \
+    && wget https://download.open-mpi.org/release/open-mpi/v4.1/openmpi-4.1.1.tar.gz 
+    && tar zxvf openmpi-4.1.1.tar.gz \
+    && cd openmpi-4.1.1 \
+    && ./configure --prefix==/opt/WRF/Library/.local/openmpi \
+    && make -j \
     && make install
+
+ENV MPI_HOME /opt/WRF/Library/.local/openmpi
+ENV PATH ${MPI_HOME}/bin:$PATH
+ENV LD_LIBRARY_PATH ${MPI_HOME}/lib:$LD_LIBRARY_PATH
+ENV MANPATH ${MPI_HOME}/share/man:$MANPATH
 
 RUN cd /opt/WRF/Downloads \
     && wget https://github.com/wrf-model/WRF/archive/refs/tags/v4.3.1.tar.gz \
